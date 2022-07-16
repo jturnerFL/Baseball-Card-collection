@@ -47,10 +47,10 @@ def sign_in():
             logged_user = User.query.filter(User.email == email).first()
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('You were successful in your initiation. Congratulations, and welcome to the Jedi Knights', 'auth-sucess')
+                flash('Sign in successful', 'auth-sucess')
                 return redirect(url_for('site.profile'))
             else:
-                flash('You have failed in your attempt to access this content', 'auth-failed')
+                flash('Log in Failed, try again', 'auth-failed')
                 return redirect(url_for('auth.sign_in'))
     except:
         raise Exception('Invalid Form Data: Please Check your Form')
